@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from Addresses.models import Place
 
 
 class UserManager(BaseUserManager):
@@ -46,6 +47,7 @@ class User(AbstractBaseUser):
     first_name = models.CharField(default='', max_length=32, null=False, blank=False, )
     second_name = models.CharField(default='', max_length=32, null=False, blank=False, )
     date_of_birth = models.DateField()
+    location = models.ForeignKey(Place, default='',null=True)
     is_active = models.BooleanField(default=True, )
     is_admin = models.BooleanField(default=False, )
     is_owner = models.BooleanField(default=False, )
@@ -90,6 +92,20 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         if self.is_admin or self.is_moder:
+            return True
+        else:
+            return False
+
+    @property
+    def isowner(self):
+        if self.is_owner:
+            return True
+        else:
+            return False
+
+    @property
+    def isclinic(self):
+        if self.is_clinic:
             return True
         else:
             return False

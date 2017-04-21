@@ -49,7 +49,10 @@ class House(models.Model):
     building = models.CharField(max_length=4, blank=True, null=True, unique=True, verbose_name="Строение")
 
     def __str__(self):
-        return self.house+self.building
+        if self.building is not None:
+            return str(self.house)+str(self.building)
+        else:
+            return self.house
 
     class Meta:
         verbose_name = "Дом"
