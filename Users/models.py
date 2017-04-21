@@ -1,3 +1,4 @@
+# coding: utf8
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
@@ -44,15 +45,14 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    first_name = models.CharField(default='', max_length=32, null=False, blank=False, )
-    second_name = models.CharField(default='', max_length=32, null=False, blank=False, )
+    first_name = models.CharField(default='', max_length=64, null=False, blank=False, unique=True, verbose_name='Имя')
     date_of_birth = models.DateField()
-    location = models.ForeignKey(Place, default='',null=True)
-    is_active = models.BooleanField(default=True, )
-    is_admin = models.BooleanField(default=False, )
-    is_owner = models.BooleanField(default=False, )
-    is_moder = models.BooleanField(default=False, )
-    is_clinic = models.BooleanField(default=False, )
+    location = models.ForeignKey(Place, default='',null=True, verbose_name='Место')
+    is_active = models.BooleanField(default=True, verbose_name='Активный')
+    is_admin = models.BooleanField(default=False, verbose_name='Админ')
+    is_owner = models.BooleanField(default=False, verbose_name='Владелец')
+    is_moder = models.BooleanField(default=False, verbose_name='Модератор')
+    is_clinic = models.BooleanField(default=False, verbose_name='Клиника')
 
     objects = UserManager()
 
@@ -71,7 +71,7 @@ class User(AbstractBaseUser):
         '''if self.first_name == '':
         //   return self.first_name + ' ' + self.second_name
         //else:'''
-        return self.email
+        return self.first_name
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"

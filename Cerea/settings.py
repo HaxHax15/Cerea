@@ -1,3 +1,4 @@
+# coding: utf8
 """
 Django settings for Cerea project.
 
@@ -31,6 +32,10 @@ AUTH_USER_MODEL = 'Users.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'Addresses',
     'Users',
     'Pets',
@@ -65,6 +70,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'admin_tools.template_loaders.Loader',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -85,6 +91,10 @@ DATABASES = {
     }
 }
 
+
+ADMIN_TOOLS_MENU = 'Cerea.menu.CustomMenu'
+ADMIN_TOOLS_INDEX_DASHBOARD = 'Cerea.dashboard.CustomIndexDashboard'
+ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'Cerea.dashboard.CustomAppIndexDashboard'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -123,3 +133,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
