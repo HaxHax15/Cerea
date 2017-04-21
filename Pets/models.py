@@ -34,6 +34,13 @@ class Pet(models.Model):
     owner = models.ForeignKey('Users.User', limit_choices_to={'is_owner':True},related_name='+')
     breed = models.ForeignKey(PetBreed)
     registrator = models.ForeignKey('Users.User', limit_choices_to={'is_clinic':True}, related_name='+')
+    image = models.ImageField(upload_to='pets/',default='/pets/nopet.jpg')
+
+    def image_tag(self):
+        return u'<img width="100" src="/media/%s" />' % (self.image)
+
+    image_tag.short_description = 'Картинка'
+    image_tag.allow_tags = True
 
     def __str__(self):
         return self.name

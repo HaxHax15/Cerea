@@ -63,6 +63,12 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['date_of_birth']
 
+    def image_tag(self):
+        return u'<img width="100" src="/media/%s" />' % (self.avatar)
+
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
     def get_full_name(self):
         # The user is identified by their email address
         return self.email

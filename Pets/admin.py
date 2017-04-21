@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 
 class PetAdmin(admin.ModelAdmin):
-    list_display = ('name','owner', 'chip_id')
+    list_display = ('name','owner', 'chip_id', 'image_tag')
 
 
 admin.site.register(PetType)
