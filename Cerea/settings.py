@@ -32,13 +32,11 @@ AUTH_USER_MODEL = 'Users.User'
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_tools',
-    'admin_tools.theming',
-    'admin_tools.menu',
-    'admin_tools.dashboard',
+    'phonenumber_field',
     'Addresses',
     'Users',
     'Pets',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,12 +66,14 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'admin_tools.template_loaders.Loader',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+
         },
     },
 ]
@@ -98,6 +98,12 @@ ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'Cerea.dashboard.CustomAppIndexDashboard'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+]
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -134,3 +140,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

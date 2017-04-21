@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 from Addresses.models import Place
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class UserManager(BaseUserManager):
@@ -53,6 +54,9 @@ class User(AbstractBaseUser):
     is_owner = models.BooleanField(default=False, verbose_name='Владелец')
     is_moder = models.BooleanField(default=False, verbose_name='Модератор')
     is_clinic = models.BooleanField(default=False, verbose_name='Клиника')
+    phone_number = PhoneNumberField(default='', verbose_name='Контактный телефон')
+    fax_number = PhoneNumberField(blank=True, verbose_name='Факс')
+    avatar = models.ImageField(upload_to='avatars/',default='avatars/nopic.jpg')
 
     objects = UserManager()
 
