@@ -46,7 +46,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    first_name = models.CharField(default='', max_length=64, null=False, blank=False, unique=True, verbose_name='Имя')
+    first_name = models.CharField(default='', max_length=64, null=False, blank=False, verbose_name='Имя')
     date_of_birth = models.DateField()
     location = models.ForeignKey(Place, default='',null=True, verbose_name='Место')
     is_active = models.BooleanField(default=True, verbose_name='Активный')

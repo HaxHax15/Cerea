@@ -92,10 +92,6 @@ DATABASES = {
 }
 
 
-ADMIN_TOOLS_MENU = 'Cerea.menu.CustomMenu'
-ADMIN_TOOLS_INDEX_DASHBOARD = 'Cerea.dashboard.CustomIndexDashboard'
-ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'Cerea.dashboard.CustomAppIndexDashboard'
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -130,7 +126,7 @@ TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
