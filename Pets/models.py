@@ -1,5 +1,6 @@
 # coding: utf8
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -40,10 +41,10 @@ class Petcolor(models.Model):
 class Pet(models.Model):
     name = models.CharField(max_length=32, blank=False, null=False, verbose_name='Кличка')
     chip_id = models.CharField(max_length=16, blank=False, null=False, verbose_name='ID чипа',unique=True)
-    owner = models.ForeignKey('Users.User', limit_choices_to={'is_owner':True},related_name='+', verbose_name='Хозяин')
+    owner = models.ForeignKey(User,related_name='+', verbose_name='Хозяин')
     breed = models.ForeignKey(PetBreed,verbose_name='Порода')
     birthday = models.DateField(verbose_name='Дата рождения',null=True)
-    registrator = models.ForeignKey('Users.User', limit_choices_to={'is_clinic':True}, related_name='+', verbose_name='Регистратор')
+    registrator = models.ForeignKey(User,  related_name='+', verbose_name='Регистратор')
     registrationdate = models.DateField(auto_now_add=True, null=True, verbose_name='Дата регистрации')
     image = models.ImageField(upload_to='pets/',default='/pets/nopet.jpg', verbose_name='Аватар')
     special = models.TextField(blank=True, null=True, verbose_name='Особые приметы')

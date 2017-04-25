@@ -20,30 +20,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from datetime import datetime
 import django.contrib.auth.views
-import Addresses.forms
-import Addresses.views
+import app.forms
+import app.views
+from django.conf import settings
 
 urlpatterns = [
-                  url(r'^grappelli/', include('grappelli.urls')),
-                  url(r'^login/$',
-                      django.contrib.auth.views.login,
-                      {
-                          'template_name': 'tpl/login.html',
-                          'authentication_form': Addresses.forms.BootstrapAuthenticationForm,
-                          'extra_context':
-                              {
-                                  'title': 'Log in',
-                                  'year': datetime.now().year,
-                              }
-                      },
-                      name='login'),
-                  url(r'^logout$',
-                      django.contrib.auth.views.logout,
-                      {
-                          'next_page': '/',
-                      },
-                      name='logout'),
-                  url(r'^admin/', admin.site.urls),
-                  url(r'^adminka/', include('Addresses.urls')),
-
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^login/$',app.views.LoginFormView.as_view()),
+    url(r'^logout$',app.views.LogoutView.as_view()),
+    url(r'^admin/', admin.site.urls),
+    url(r'^adminka/', include('app.urls')),
+    url(r'', include('app.urls')),
+    url(r'index.html', include('app.urls')),
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+              + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
