@@ -4,11 +4,13 @@
             <div class="dashboard_graph">
                 <div class="row x_title">
                     <div class="col-md-6">
-                        <h3>Улицы</h3>
+                        <h3>Дома</h3>
+
                         <table class="table table-striped">
-                            {% for street in streets_list %}
+                            {% for house in houses_list %}
                                 <tr>
-                                    <td>{{ street.name }}</td>
+                                    <td>{{ house.house }}</td>
+                                    <td>{{ house.building }}</td>
                                 </tr>
                             {% endfor %}
                         </table>
@@ -18,6 +20,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

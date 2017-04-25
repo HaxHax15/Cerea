@@ -5,20 +5,18 @@
                 <div class="row x_title">
                     <div class="col-md-6">
                         <h3>Регионы</h3>
-
-                            <table class="table">
-                                {% for region in regions_list %}
-                                    <tr>
-                                        <td>{{ region.name }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
+                        <table class="table table-striped">
+                            {% for region in regions_list %}
+                                <tr>
+                                    <td>{{ region.name }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                 </div>
                 <div class="clearfix">
                 </div>
             </div>
         </div>
-
     </div>
 </div>
