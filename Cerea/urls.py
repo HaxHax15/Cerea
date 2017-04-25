@@ -18,11 +18,32 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from datetime import datetime
+import django.contrib.auth.views
+import Addresses.forms
+import Addresses.views
 
 urlpatterns = [
-    url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^addresses/', include('Addresses.urls')),
+                  url(r'^grappelli/', include('grappelli.urls')),
+                  url(r'^login/$',
+                      django.contrib.auth.views.login,
+                      {
+                          'template_name': 'tpl/login.html',
+                          'authentication_form': Addresses.forms.BootstrapAuthenticationForm,
+                          'extra_context':
+                              {
+                                  'title': 'Log in',
+                                  'year': datetime.now().year,
+                              }
+                      },
+                      name='login'),
+                  url(r'^logout$',
+                      django.contrib.auth.views.logout,
+                      {
+                          'next_page': '/',
+                      },
+                      name='logout'),
+                  url(r'^admin/', admin.site.urls),
+                  url(r'^adminka/', include('Addresses.urls')),
 
-    ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
