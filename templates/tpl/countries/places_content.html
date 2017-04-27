@@ -3,13 +3,21 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="dashboard_graph">
                 <div class="row x_title">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <h3>Места</h3>
                         <table class="table table-striped">
+                                                    <tr>
+                                <td>
+                                    <b>Место:</b>
+                                </td>
+                                <td>
+                                    <b>Редактирование:</b>
+                                </td>
+                            </tr>
                             {% for place in places_list %}
                                 <tr>
                                     <td>{{ place }}</td>
-                                    <td><a class="btn btn-app" href="/adminka/locations/places/{{  place.id }}/edit/"><i class="fa fa-edit"></i></a></td>
+                                    <td><a class="btn btn-success" href="/adminka/locations/places/{{  place.id }}/edit/"><i class="fa fa-edit"></i></a></td>
                                 </tr>
                             {% endfor %}
                         </table>

@@ -6,12 +6,22 @@
                     <div class="col-md-12">
                         <h3>Страны</h3><br>
                         <table class="table table-striped">
-                        {% for country in countries_list  %}
                             <tr>
-                                <td>{{ country.name }}</td>
-                                <td><a class="btn btn-app" href="/adminka/locations/countries/{{  country.id }}/edit/"><i class="fa fa-edit"></i></a></td>
+                                <td align="center">
+                                    <b>Страна:</b>
+                                </td>
+                                <td align="center">
+                                    <b>Редактирование:</b>
+                                </td>
                             </tr>
-                        {% endfor %}
+                            {% for country in countries_list %}
+                                <tr>
+                                    <td align="center">{{ country.name }}</td>
+                                    <td align="center"><a class="btn btn-success"
+                                                          href="/adminka/locations/countries/{{ country.id }}/edit/"><i
+                                            class="fa fa-edit"></i></a></td>
+                                </tr>
+                            {% endfor %}
                         </table>
                     </div>
                 </div>

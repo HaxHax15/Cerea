@@ -3,14 +3,27 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="dashboard_graph">
                 <div class="row x_title">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <h3>Дома</h3>
-
                         <table class="table table-striped">
+                            <tr>
+                                <td align="center">
+                                    <b>Дом:</b>
+                                </td>
+                                <td align="center">
+                                    <b>Корпус:</b>
+                                </td>
+                                <td align="center">
+                                    <b>Редактирование:</b>
+                                </td>
+                            </tr>
                             {% for house in houses_list %}
                                 <tr>
-                                    <td>{{ house.house }}</td>
-                                    <td>{{ house.building }}</td>
+                                    <td align="center">{{ house.house }}</td>
+                                    <td align="center">{{ house.building }}</td>
+                                    <td td align="center"><a class="btn btn-success"
+                                           href="/adminka/locations/houses/{{ house.id }}/edit/">
+                                        <i class="fa fa-edit"></i></a></td>
                                 </tr>
                             {% endfor %}
                         </table>

@@ -3,12 +3,22 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="dashboard_graph">
                 <div class="row x_title">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <h3>Улицы</h3>
                         <table class="table table-striped">
+                            <tr>
+                                <td align="center">
+                                    <b>Улица:</b>
+                                </td>
+                                <td align="center">
+                                    <b>Редактирование:</b>
+                                </td>
+                            </tr>
                             {% for street in streets_list %}
                                 <tr>
-                                    <td>{{ street.name }}</td>
+                                    <td td align="center">{{ street.name }}</td>
+                                    <td align="center"><a class="btn btn-success" href="/adminka/locations/streets/{{ street.id }}/edit/">
+                                        <i class="fa fa-edit"></i></a></td>
                                 </tr>
                             {% endfor %}
                         </table>

@@ -45,8 +45,7 @@ def houses(request, house_id):
     return render(request, "tpl/houses.html",context)
 
 
-
-def get_name(request,country_id):
+def editcountry(request,country_id):
     country = get_object_or_404(Country, pk = country_id)
     if request.method == 'POST':
         form = CountryForm(request.POST,instance=country)
@@ -57,16 +56,18 @@ def get_name(request,country_id):
         form = CountryForm(instance=country)
     return render(request, 'tpl/forms/country_edit_form.html', {'form': form})
 
+
 def editplace(request,place_id):
-    place = get_object_or_404(Country, pk = place_id)
+    place = get_object_or_404(Place, pk = place_id)
     if request.method == 'POST':
         form = PlaceForm(request.POST,instance=place)
         if form.is_valid():
-            country = form.save()
+            place = form.save()
             return HttpResponseRedirect('/adminka/locations/places')
     else:
         form = PlaceForm(instance=place)
     return render(request, 'tpl/forms/place_edit_form.html', {'form': form})
+
 
 def editregion(request,region_id):
     region = get_object_or_404(Region, pk = region_id)
@@ -78,3 +79,37 @@ def editregion(request,region_id):
     else:
         form = RegionForm(instance=region)
     return render(request, 'tpl/forms/region_edit_form.html', {'form': form})
+
+
+def editcity(request,city_id):
+    city = get_object_or_404(City, pk = city_id)
+    if request.method == 'POST':
+        form = CityForm(request.POST,instance=city)
+        if form.is_valid():
+            country = form.save()
+            return HttpResponseRedirect('/adminka/locations/cities')
+    else:
+        form = CityForm(instance=city)
+    return render(request, 'tpl/forms/city_edit_form.html', {'form': form})
+
+def editstreet(request,street_id):
+    street = get_object_or_404(Street, pk = street_id)
+    if request.method == 'POST':
+        form = StreetForm(request.POST,instance=street)
+        if form.is_valid():
+            country = form.save()
+            return HttpResponseRedirect('/adminka/locations/streets')
+    else:
+        form = StreetForm(instance=street)
+    return render(request, 'tpl/forms/street_edit_form.html', {'form': form})
+
+def edithouse(request,house_id):
+    house = get_object_or_404(House, pk = house_id)
+    if request.method == 'POST':
+        form = HouseForm(request.POST,instance=house)
+        if form.is_valid():
+            house = form.save()
+            return HttpResponseRedirect('/adminka/locations/houses')
+    else:
+        form = HouseForm(instance=house)
+    return render(request, 'tpl/forms/house_edit_form.html', {'form': form})
