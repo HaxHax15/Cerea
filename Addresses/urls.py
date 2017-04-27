@@ -5,6 +5,7 @@ urlpatterns=[
     url(r'^countries/(?:(?P<country_id>\d+)/edit/)?$',views.get_name, name='countries'),
     #url(r'^countries/(?P<country_id>[0-9]+)/$', views.countries, name='countries'),
     url(r'^regions/(?:(?P<region_id>\d+)/)?$',views.regions, name='regions'),
+url(r'^regions/(?:(?P<region_id>\d+)/edit/)?$',views.editregion, name='regions'),
     url(r'^cities/(?:(?P<city_id>\d+)/)?$',views.cities, name='cities'),
     url(r'^streets/(?:(?P<street_id>\d+)/)?$',views.streets, name='streets'),
     url(r'^houses/(?:(?P<house_id>\d+)/)?$',views.houses, name='houses'),

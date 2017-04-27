@@ -15,3 +15,9 @@ class PlaceForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = '__all__'
+
+class RegionForm(forms.ModelForm):
+
+    class Meta:
+        model = Region
+        fields = '__all__'

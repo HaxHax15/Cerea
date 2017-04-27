@@ -67,3 +67,14 @@ def editplace(request,place_id):
     else:
         form = PlaceForm(instance=place)
     return render(request, 'tpl/forms/place_edit_form.html', {'form': form})
+
+def editregion(request,region_id):
+    region = get_object_or_404(Region, pk = region_id)
+    if request.method == 'POST':
+        form = RegionForm(request.POST,instance=region)
+        if form.is_valid():
+            country = form.save()
+            return HttpResponseRedirect('/adminka/locations/regions')
+    else:
+        form = RegionForm(instance=region)
+    return render(request, 'tpl/forms/region_edit_form.html', {'form': form})

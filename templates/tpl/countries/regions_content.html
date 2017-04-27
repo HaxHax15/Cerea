@@ -9,6 +9,9 @@
                             {% for region in regions_list %}
                                 <tr>
                                     <td>{{ region.name }}</td>
+                                    <td>
+                                        <a class="btn btn-app" href="/adminka/locations/regions/{{ region.id }}/edit/">
+                                            <i class="fa fa-edit"></i></a></td>
                                 </tr>
                             {% endfor %}
                         </table>
