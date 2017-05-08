@@ -45,7 +45,7 @@ def houses(request, house_id):
     return render(request, "tpl/houses.html",context)
 
 
-def editcountry(request,country_id):
+def editcountry(request,country_id, title):
     country = get_object_or_404(Country, pk = country_id)
     if request.method == 'POST':
         form = CountryForm(request.POST,instance=country)
@@ -54,10 +54,10 @@ def editcountry(request,country_id):
             return HttpResponseRedirect('/adminka/locations/countries')
     else:
         form = CountryForm(instance=country)
-    return render(request, 'tpl/forms/country_edit_form.html', {'form': form})
+    return render(request, 'tpl/forms/AddressEditForm.html', {'form': form, 'title':title})
 
 
-def editplace(request,place_id):
+def editplace(request,place_id, title):
     place = get_object_or_404(Place, pk = place_id)
     if request.method == 'POST':
         form = PlaceForm(request.POST,instance=place)
@@ -66,10 +66,10 @@ def editplace(request,place_id):
             return HttpResponseRedirect('/adminka/locations/places')
     else:
         form = PlaceForm(instance=place)
-    return render(request, 'tpl/forms/place_edit_form.html', {'form': form})
+    return render(request, 'tpl/forms/AddressEditForm.html', {'form': form, 'title':title})
 
 
-def editregion(request,region_id):
+def editregion(request,region_id, title):
     region = get_object_or_404(Region, pk = region_id)
     if request.method == 'POST':
         form = RegionForm(request.POST,instance=region)
@@ -78,10 +78,10 @@ def editregion(request,region_id):
             return HttpResponseRedirect('/adminka/locations/regions')
     else:
         form = RegionForm(instance=region)
-    return render(request, 'tpl/forms/region_edit_form.html', {'form': form})
+    return render(request, 'tpl/forms/AddressEditForm.html', {'form': form, 'title':title})
 
 
-def editcity(request,city_id):
+def editcity(request,city_id, title):
     city = get_object_or_404(City, pk = city_id)
     if request.method == 'POST':
         form = CityForm(request.POST,instance=city)
@@ -90,9 +90,9 @@ def editcity(request,city_id):
             return HttpResponseRedirect('/adminka/locations/cities')
     else:
         form = CityForm(instance=city)
-    return render(request, 'tpl/forms/city_edit_form.html', {'form': form})
+    return render(request, 'tpl/forms/AddressEditForm.html', {'form': form, 'title':title})
 
-def editstreet(request,street_id):
+def editstreet(request,street_id, title):
     street = get_object_or_404(Street, pk = street_id)
     if request.method == 'POST':
         form = StreetForm(request.POST,instance=street)
@@ -101,9 +101,9 @@ def editstreet(request,street_id):
             return HttpResponseRedirect('/adminka/locations/streets')
     else:
         form = StreetForm(instance=street)
-    return render(request, 'tpl/forms/street_edit_form.html', {'form': form})
+    return render(request, 'tpl/forms/AddressEditForm.html', {'form': form, 'title':title})
 
-def edithouse(request,house_id):
+def edithouse(request,house_id, title):
     house = get_object_or_404(House, pk = house_id)
     if request.method == 'POST':
         form = HouseForm(request.POST,instance=house)
@@ -112,4 +112,4 @@ def edithouse(request,house_id):
             return HttpResponseRedirect('/adminka/locations/houses')
     else:
         form = HouseForm(instance=house)
-    return render(request, 'tpl/forms/house_edit_form.html', {'form': form})
+    return render(request, 'tpl/forms/AddressEditForm.html', {'form': form, 'title':title})
