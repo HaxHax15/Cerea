@@ -1,33 +1,34 @@
 <div class="right_col" role="main">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph">
-                <div class="row x_title">
-                    <div class="col-md-12">
-                        <h3>Регионы</h3>
-                        <table class="table table-striped">
-                                                    <tr>
-                                <td align="center">
-                                    <b>Регион:</b>
-                                </td>
-                                <td align="center">
-                                    <b>Редактирование:</b>
-                                </td>
-                            </tr>
-                            {% for region in regions_list %}
-                                <tr>
-                                    <td align="center">{{ region.name }}</td>
-                                    <td align="center">
-                                        <a class="btn btn-success" href="/adminka/locations/regions/{{ region.id }}/edit/">
-                                            <i class="fa fa-edit"></i></a></td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                </div>
-                <div class="clearfix">
-                </div>
+            <div class="x_title">
+                <h2>Регионы</h2>
+                {% include 'tpl/countries/subhtml/x_title.html' %}
             </div>
+            <div class="x_content">
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <b>Регион:</b>
+                        </td>
+                        <td align="center">
+                            <b>Редактирование:</b>
+                        </td>
+                    </tr>
+                    {% for region in regions_list %}
+                        <tr>
+                            <td>{{ region.name }}</td>
+                            <td align="center">
+                                <a class="btn btn-success" href="/adminka/locations/regions/{{ region.id }}/edit/">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="clearfix">
         </div>
     </div>
 </div>

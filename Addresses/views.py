@@ -6,31 +6,31 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 @login_required
-def countries(request, country_id):
-    if not country_id:
-        countries_list = Country.objects.all()
-    else:
-        countries_list = get_list_or_404(Country,pk=country_id)
-    context = {'countries_list':countries_list}
+def countries(request, id, title, prefix):
+    if prefix=='countries':
+        if not id:
+            objects_list = Country.objects.all()
+        else:
+            objects_list = get_list_or_404(Country,pk=id)
+    elif prefix=='regions':
+        if not id:
+            objects_list = Region.objects.all()
+        else:
+            objects_list = get_list_or_404(Region,pk=id)
+    elif prefix=='cities':
+        if not id:
+            objects_list = City.objects.all()
+        else:
+            objects_list = get_list_or_404(City,pk=id)
+    elif prefix=='streets':
+        if not id:
+            objects_list = Street.objects.all()
+        else:
+            objects_list = get_list_or_404(Street,pk=id)
+
+
+    context = {'objects_list':objects_list, 'title':title, 'prefix':prefix}
     return render(request, "tpl/countries.html",context)
-
-@login_required
-def regions(request, region_id):
-    regions_list = Region.objects.all()
-    context = {'regions_list':regions_list}
-    return render(request, "tpl/regions.html",context)
-
-@login_required
-def cities(request, city_id):
-    cities_list = City.objects.all()
-    context = {'cities_list':cities_list}
-    return render(request, "tpl/cities.html",context)
-
-@login_required
-def streets(request, street_id):
-    streets_list = Street.objects.all()
-    context = {'streets_list':streets_list}
-    return render(request, "tpl/streets.html",context)
 
 @login_required
 def places(request, place_id):
@@ -74,7 +74,7 @@ def editregion(request,region_id, title):
     if request.method == 'POST':
         form = RegionForm(request.POST,instance=region)
         if form.is_valid():
-            country = form.save()
+            region = form.save()
             return HttpResponseRedirect('/adminka/locations/regions')
     else:
         form = RegionForm(instance=region)
@@ -86,7 +86,7 @@ def editcity(request,city_id, title):
     if request.method == 'POST':
         form = CityForm(request.POST,instance=city)
         if form.is_valid():
-            country = form.save()
+            city = form.save()
             return HttpResponseRedirect('/adminka/locations/cities')
     else:
         form = CityForm(instance=city)
@@ -97,7 +97,7 @@ def editstreet(request,street_id, title):
     if request.method == 'POST':
         form = StreetForm(request.POST,instance=street)
         if form.is_valid():
-            country = form.save()
+            street = form.save()
             return HttpResponseRedirect('/adminka/locations/streets')
     else:
         form = StreetForm(instance=street)

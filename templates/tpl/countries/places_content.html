@@ -1,32 +1,35 @@
 <div class="right_col" role="main">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph">
-                <div class="row x_title">
-                    <div class="col-md-12">
-                        <h3>Места</h3>
-                        <table class="table table-striped">
-                                                    <tr>
-                                <td>
-                                    <b>Место:</b>
-                                </td>
-                                <td>
-                                    <b>Редактирование:</b>
-                                </td>
-                            </tr>
-                            {% for place in places_list %}
-                                <tr>
-                                    <td>{{ place }}</td>
-                                    <td><a class="btn btn-success" href="/adminka/locations/places/{{  place.id }}/edit/"><i class="fa fa-edit"></i></a></td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                </div>
-                <div class="clearfix">
-                </div>
+            <div class="x_title">
+                <h2>Места</h2>
+                {% include 'tpl/countries/subhtml/x_title.html' %}
+            </div>
+            <div class="x_content">
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <b>Место:</b>
+                        </td>
+                        <td align="center">
+                            <b>Редактирование:</b>
+                        </td>
+                    </tr>
+                    {% for place in places_list %}
+                        <tr>
+                            <td>{{ place }}</td>
+                            <td td align="center">
+                                <a class="btn btn-success" href="/adminka/locations/places/{{ place.id }}/edit/">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
-
+        <div class="clearfix">
+        </div>
     </div>
 </div>
+

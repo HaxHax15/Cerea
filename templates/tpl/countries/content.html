@@ -2,24 +2,16 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_title">
-                <h2>Страны</h2>
+                <h2>{{ title }}</h2>
                 {% include 'tpl/countries/subhtml/x_title.html' %}
             </div>
             <div class="x_content">
                 <table class="table table-striped">
-                    <tr>
-                        <td>
-                            <b>Страна:</b>
-                        </td>
-                        <td align="center">
-                            <b>Редактирование:</b>
-                        </td>
-                    </tr>
-                    {% for country in countries_list %}
+                    {% for object in objects_list %}
                         <tr>
-                            <td >{{ country.name }}</td>
+                            <td >{{ object.name }}</td>
                             <td align="center">
-                                <a class="btn btn-success" href="/adminka/locations/countries/{{ country.id }}/edit/">
+                                <a class="btn btn-success" href="/adminka/locations/{{ prefix }}/{{ object.id }}/edit/">
                                     <i class="fa fa-edit"></i>
                                 </a>
                             </td>
@@ -27,8 +19,8 @@
                     {% endfor %}
                 </table>
             </div>
-        </div>
-        <div class="clearfix">
+            <div class="clearfix">
+            </div>
         </div>
     </div>
 </div>

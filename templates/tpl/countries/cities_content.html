@@ -2,15 +2,13 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_title">
-                <div class="col-md-12">
-                    <h3>Города</h3>
-
-                </div>
+                <h2>Города</h2>
+                {% include 'tpl/countries/subhtml/x_title.html' %}
             </div>
             <div class="x_content">
                 <table class="table table-striped">
                     <tr>
-                        <td align="center">
+                        <td>
                             <b>Город:</b>
                         </td>
                         <td align="center">
@@ -19,10 +17,12 @@
                     </tr>
                     {% for city in cities_list %}
                         <tr>
-                            <td align="center">{{ city.name }}</td>
+                            <td >{{ city.name }}</td>
                             <td align="center">
                                 <a class="btn btn-success" href="/adminka/locations/cities/{{ city.id }}/edit/">
-                                    <i class="fa fa-edit"></i></a></td>
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
